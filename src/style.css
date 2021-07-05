@@ -28,7 +28,7 @@ body {
   border-radius: 10px;
   border: 1px solid #affaee;
   margin: 20px auto;
-  max-width: 500px;
+  max-width: 600px;
 }
 .main-forecast {
   margin: 20px;
@@ -48,8 +48,7 @@ body {
 .predict {
   text-align: center;
 }
-.predict.icon {
-  font-size: 30px;
+.current-icon {
 }
 .week-forescast {
   padding: 10px;
