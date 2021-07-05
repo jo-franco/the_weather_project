@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -22,25 +23,20 @@ function formatDate(date) {
 }
 
 function showTemperature(response) {
-  //let currentTemp = document.querySelector("#current-temperature");
-  //let temperature = Math.round(response.data.main.temp);
-  //currentTemp.innerHTML = `${temperature}`;
-  //let currentFeel = document.querySelector("#current-feel");
-  //let feel = Math.round(response.data.main.feels_like);
-  //currentFeel.innerHTML = `${feel}`;
-  //let currentDescription = document.querySelector("#weather-description");
-  //currentDescription.innerHTML = response.data.weather[0].description;
-
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
   document.querySelector("#current-feel").innerHTML = Math.round(
     response.data.main.feels_like
   );
-  document.querySelector("#weather-description").innerHTML =
+  document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
 
   document.querySelector("#city").innerHTML = response.data.name;
+
+  document.querySelector("#current-date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 
 function search(cityInput) {
@@ -83,10 +79,6 @@ cityForm.addEventListener("click", searchCity);
 
 let currentButton = document.querySelector("button[type='button']");
 currentButton.addEventListener("click", getCurrent);
-
-let currentDate = document.querySelector("#current-date");
-let currentTime = new Date();
-currentDate.innerHTML = formatDate(currentTime);
 
 search("Lisbon");
 
