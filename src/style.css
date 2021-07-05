@@ -28,9 +28,9 @@ body {
   border-radius: 10px;
   border: 1px solid #affaee;
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 560px;
 }
-.main-forecast {
+.main-weather {
   margin: 20px;
 }
 .date {
@@ -48,6 +48,12 @@ body {
 .predict {
   text-align: center;
 }
+.current-weather .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
 img#current-icon {
   max-width: 120px;
 }
