@@ -23,6 +23,8 @@ function formatDate(timestamp) {
 }
 
 function showTemperature(response) {
+  let currentIcon = document.querySelector("#current-icon");
+
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -36,6 +38,10 @@ function showTemperature(response) {
 
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt * 1000
+  );
+  currentIcon.setAttribute(
+    "src",
+    `images/weather_${response.data.weather[0].icon}.png`
   );
 }
 

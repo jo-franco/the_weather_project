@@ -48,7 +48,8 @@ body {
 .predict {
   text-align: center;
 }
-.current-icon {
+img#current-icon {
+  max-width: 120px;
 }
 .week-forescast {
   padding: 10px;
