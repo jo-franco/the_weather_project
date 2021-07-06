@@ -3,18 +3,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 200;
 }
-.temperature {
-  font-size: 90px;
-  font-weight: 500;
-  margin: 0;
-}
-
-.units {
-  vertical-align: 50px;
-  font-weight: 200;
-  margin: 0;
-}
-
 .weather-container {
   background: linear-gradient(
     90deg,
@@ -24,29 +12,44 @@ body {
     rgb(234, 251, 251) 70%,
     rgb(240, 251, 244) 100%
   );
-  padding: 20px;
+  padding: 20px 0px;
   border-radius: 10px;
   border: 1px solid #affaee;
   margin: 20px auto;
-  max-width: 560px;
+  max-width: 460px;
 }
-.main-weather {
-  margin: 20px;
+.city-weather {
+  margin: 20px 30px;
+}
+h4#city {
+  margin: 0px;
+}
+.temperature {
+  font-size: 90px;
+  font-weight: 300;
+  margin: 0px;
+}
+.units {
+  vertical-align: 50px;
+  font-weight: 200;
+  margin: 0;
 }
 .date {
   text-align: right;
+  margin: 0px;
 }
 .weather {
-  text-align: right;
-  font-size: 80px;
+}
+img#current-icon {
+  float: right;
+  margin: 10px 0px;
+  max-width: 70%;
 }
 .weather-description {
   font-size: 14px;
   text-align: right;
+  margin: 0px;
   text-transform: capitalize;
-}
-.predict {
-  text-align: center;
 }
 .current-weather .active {
   color: black;
@@ -54,14 +57,14 @@ body {
   text-decoration: none;
 }
 
-img#current-icon {
-  max-width: 120px;
+.predict {
+  text-align: center;
 }
 .week-forescast {
+  margin: 20px;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid rgb(200, 200, 200);
-  margin-top: 60px;
 }
 .small-icon {
   font-size: 20px;
