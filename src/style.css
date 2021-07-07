@@ -54,7 +54,7 @@ img#current-icon {
   cursor: default;
   text-decoration: none;
 }
-.week-forescast {
+.week-weather-forecast {
   margin: 20px;
   padding: 10px;
   border-radius: 3px;
@@ -64,12 +64,13 @@ img#current-icon {
 img#week-forecast-icons {
   margin: 4px;
 }
-
-.predict {
+.hour-weather-forecast {
+  margin: 20px;
+  padding: 10px;
   text-align: center;
 }
-.small-icon {
-  font-size: 20px;
+img#hour-forecast-icons {
+  margin: 4px;
 }
 .freepik-link {
   text-align: center;

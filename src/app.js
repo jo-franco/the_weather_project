@@ -48,6 +48,31 @@ function showWeekForecast() {
   weekForecastElement.innerHTML = weekForecastHTML;
 }
 
+function showHourForecast() {
+  let hourForecastElement = document.querySelector("#hour-forecast");
+
+  let hourForecastHTML = `<div class="row">`;
+  let hours = ["13:00", "14:00", "15:00"];
+  hours.forEach(function (time) {
+    hourForecastHTML =
+      hourForecastHTML +
+      `
+            <div class="col-2">
+              <div class="hour-forecast-time">
+                ${time}
+              </div>
+              <img src="images/weather_04d.png" width="28" alt="" id="hour-forecast-icons">
+              <div class="hour-forecast-description">
+                Clouds
+              </div>
+            </div>
+  `;
+  });
+
+  hourForecastHTML = hourForecastHTML + `</div>`;
+  hourForecastElement.innerHTML = hourForecastHTML;
+}
+
 function showTemperature(response) {
   let currentIcon = document.querySelector("#current-icon");
 
@@ -140,6 +165,7 @@ currentButton.addEventListener("click", getCurrent);
 
 search("Lisbon");
 showWeekForecast();
+showHourForecast();
 
 //function convertCelsius(event) {
 //  event.preventDefault();
