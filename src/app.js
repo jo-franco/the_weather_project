@@ -22,11 +22,12 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function showWeekForecast() {
+function showForecast() {
   let weekForecastElement = document.querySelector("#week-forecast");
+  let hourForecastElement = document.querySelector("#hour-forecast");
 
   let weekForecastHTML = `<div class="row">`;
-  let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   weekDays.forEach(function (day) {
     weekForecastHTML =
       weekForecastHTML +
@@ -45,11 +46,6 @@ function showWeekForecast() {
   });
 
   weekForecastHTML = weekForecastHTML + `</div>`;
-  weekForecastElement.innerHTML = weekForecastHTML;
-}
-
-function showHourForecast() {
-  let hourForecastElement = document.querySelector("#hour-forecast");
 
   let hourForecastHTML = `<div class="row">`;
   let hours = ["13:00", "14:00", "15:00"];
@@ -57,7 +53,7 @@ function showHourForecast() {
     hourForecastHTML =
       hourForecastHTML +
       `
-            <div class="col-2">
+            <div class="col-4">
               <div class="hour-forecast-time">
                 ${time}
               </div>
@@ -70,7 +66,9 @@ function showHourForecast() {
   });
 
   hourForecastHTML = hourForecastHTML + `</div>`;
+
   hourForecastElement.innerHTML = hourForecastHTML;
+  weekForecastElement.innerHTML = weekForecastHTML;
 }
 
 function showTemperature(response) {
@@ -164,8 +162,7 @@ let currentButton = document.querySelector("button[type='button']");
 currentButton.addEventListener("click", getCurrent);
 
 search("Lisbon");
-showWeekForecast();
-showHourForecast();
+showForecast();
 
 //function convertCelsius(event) {
 //  event.preventDefault();

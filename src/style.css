@@ -54,11 +54,15 @@ img#current-icon {
   cursor: default;
   text-decoration: none;
 }
+
+hr {
+  border-top: 1px solid #1df9d4;
+}
 .week-weather-forecast {
   margin: 20px;
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid #affaee;
   text-align: center;
 }
 img#week-forecast-icons {
