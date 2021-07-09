@@ -1,3 +1,27 @@
+const apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
+
+function convertCelsius(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let currentFeel = document.querySelector("#current-feel");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+  currentFeel.innerHTML = Math.round(celsiusFeelTemperature);
+}
+
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let currentFeel = document.querySelector("#current-feel");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+  let fahrenheitFeelTemperature = (celsiusFeelTemperature * 9) / 5 + 32;
+  currentFeel.innerHTML = Math.round(fahrenheitFeelTemperature);
+}
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -44,8 +68,6 @@ function formatHour(timestamp) {
 }
 
 function showForecast(response) {
-  console.log(response.data.hourly);
-  console.log(response.data.daily);
   let weekDays = response.data.daily;
   let hours = response.data.hourly;
 
@@ -107,69 +129,10 @@ function showForecast(response) {
   weekForecastElement.innerHTML = weekForecastHTML;
 }
 
-function showFahrenheitForecast(response) {
-  console.log(response.data.daily);
-  console.log(response.data.hourly);
-  let weekForecastElement = document.querySelector("#week-forecast");
-  let hourForecastElement = document.querySelector("#hour-forecast");
-
-  let weekForecastHTML = `<div class="row">`;
-  let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  weekDays.forEach(function (day) {
-    weekForecastHTML =
-      weekForecastHTML +
-      `
-            <div class="col-2">
-              <div class="week-forecast-day">
-                ${day}
-              </div>
-              <img src="images/weather_01d.png" alt="" id="week-forecast-icons">
-              <div class="week-forecast-temperatures">
-                <span class="week-temperature-max">18˚ </span>
-                <span class="week-temperature-min">9˚</span>
-              </div>
-            </div>
-  `;
-  });
-
-  weekForecastHTML = weekForecastHTML + `</div>`;
-
-  let hourForecastHTML = `<div class="row">`;
-  let hours = ["13:00", "14:00", "15:00"];
-  hours.forEach(function (time) {
-    hourForecastHTML =
-      hourForecastHTML +
-      `
-            <div class="col-4">
-              <div class="hour-forecast-time">
-                ${time}
-              </div>
-              <img src="images/weather_04d.png" alt="" id="hour-forecast-icons">
-              <div class="hour-forecast-description">
-                Clouds
-              </div>
-            </div>
-  `;
-  });
-
-  hourForecastHTML = hourForecastHTML + `</div>`;
-
-  hourForecastElement.innerHTML = hourForecastHTML;
-  weekForecastElement.innerHTML = weekForecastHTML;
-}
-
 function getForecast(coordinates) {
-  let apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(showForecast);
-}
 
-function getFahrenheitForecast(coordinates) {
-  let apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(showFahrenheitForecast);
+  axios.get(apiUrl).then(showForecast);
 }
 
 function showTemperature(response) {
@@ -186,23 +149,16 @@ function showTemperature(response) {
     response.data.weather[0].description;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-date").innerHTML = formatDate(
-    response.data.dt * 1000
+    (response.data.dt + response.data.timezone) * 1000
   );
   document
     .querySelector("#current-icon")
     .setAttribute("src", `images/weather_${response.data.weather[0].icon}.png`);
 
-  let fahrenheit = document.querySelector("#fahrenheit-link");
-
-  if (fahrenheit.className === "active") {
-    getFahrenheitForecast(response.data.coord);
-  } else {
-    getForecast(response.data.coord);
-  }
+  getForecast(response.data.coord);
 }
 
 function search(cityInput) {
-  let apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   axios
     .get(`${apiUrl}q=${cityInput}&units=metric&appid=${apiKey}`)
@@ -218,8 +174,6 @@ function searchCity(event) {
 function getPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-
-  let apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
 
   axios
@@ -230,28 +184,6 @@ function getPosition(position) {
 function getCurrent(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getPosition);
-}
-
-function convertCelsius(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  let currentFeel = document.querySelector("#current-feel");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-  currentFeel.innerHTML = Math.round(celsiusFeelTemperature);
-}
-
-function convertFahrenheit(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  let currentFeel = document.querySelector("#current-feel");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
-  let fahrenheitFeelTemperature = (celsiusFeelTemperature * 9) / 5 + 32;
-  currentFeel.innerHTML = Math.round(fahrenheitFeelTemperature);
 }
 
 let celsiusTemperature = null;
@@ -269,4 +201,4 @@ cityForm.addEventListener("click", searchCity);
 let currentButton = document.querySelector("button[type='button']");
 currentButton.addEventListener("click", getCurrent);
 
-search("Rome");
+search("Lisbon");
