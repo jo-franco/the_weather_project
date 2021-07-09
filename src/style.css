@@ -67,14 +67,17 @@ hr {
 }
 img#week-forecast-icons {
   margin: 4px;
+  max-width: 70%;
 }
 .hour-weather-forecast {
   margin: 20px;
   padding: 10px;
   text-align: center;
+  text-transform: capitalize;
 }
 img#hour-forecast-icons {
   margin: 4px;
+  max-width: 40%;
 }
 .freepik-link {
   text-align: center;
