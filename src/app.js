@@ -269,4 +269,4 @@ cityForm.addEventListener("click", searchCity);
 let currentButton = document.querySelector("button[type='button']");
 currentButton.addEventListener("click", getCurrent);
 
-search("Lisbon");
+search("Rome");
