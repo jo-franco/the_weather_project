@@ -43,7 +43,7 @@ function formatDate(timestamp) {
   ];
   let day = days[date.getDay()];
 
-  return `${day} ${hours}:${minutes}`;
+  return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -68,6 +68,7 @@ function formatHour(timestamp) {
 }
 
 function showForecast(response) {
+  console.log(response.data);
   let weekDays = response.data.daily;
   let hours = response.data.hourly;
 
@@ -139,9 +140,17 @@ function showTemperature(response) {
   console.log(response.data);
   celsiusTemperature = response.data.main.temp;
   celsiusFeelTemperature = response.data.main.feels_like;
+  celsiusMaxTemperature = response.data.main.temp_max;
+  celsiusMinTemperature = response.data.main.temp_min;
 
   document.querySelector("#current-temperature").innerHTML =
     Math.round(celsiusTemperature);
+  document.querySelector("#max-temp").innerHTML = Math.round(
+    celsiusMaxTemperature
+  );
+  document.querySelector("#min-temp").innerHTML = Math.round(
+    celsiusMinTemperature
+  );
   document.querySelector("#current-feel").innerHTML = Math.round(
     celsiusFeelTemperature
   );
@@ -149,7 +158,7 @@ function showTemperature(response) {
     response.data.weather[0].description;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-date").innerHTML = formatDate(
-    (response.data.dt + response.data.timezone) * 1000
+    response.data.dt * 1000
   );
   document
     .querySelector("#current-icon")
@@ -188,6 +197,8 @@ function getCurrent(event) {
 
 let celsiusTemperature = null;
 let celsiusFeelTemperature = null;
+let celsiusMaxTemperature = null;
+let celsiusMinTemperature = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertCelsius);

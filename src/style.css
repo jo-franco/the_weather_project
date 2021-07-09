@@ -4,6 +4,9 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 200;
 }
+.date {
+  margin: 0px 20px;
+}
 .weather-container {
   background: linear-gradient(
     90deg,
@@ -13,7 +16,7 @@ body {
     rgb(234, 251, 251) 70%,
     rgb(240, 251, 244) 100%
   );
-  padding: 20px 0px;
+  padding: 20px 0px 20px 0px;
   border-radius: 10px;
   border: 1px solid #affaee;
   margin: 20px auto;
@@ -33,11 +36,14 @@ h4#city {
 .units {
   vertical-align: 50px;
   font-weight: 200;
-  margin: 0;
-}
-.date {
-  text-align: right;
   margin: 0px;
+}
+.max-min-temperature {
+  margin: 0px 20px;
+  padding: 0px;
+}
+.feels-like {
+  text-align: right;
 }
 img#current-icon {
   float: right;

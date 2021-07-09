@@ -22,6 +22,7 @@
   <body>
     <div class="container">
       <div class="weather-container">
+        
         <nav class="navbar navbar-light" style="background-color: #d9f6ff;">
         <div class="container-fluid">
           <form class="d-flex">
@@ -41,7 +42,9 @@
           <div class="col">
             <h4 id="city"></h4>
           </div>
-          <div class="col date" id="current-date"></div>
+          <div class="col feels-like">
+            Feels like
+            <span class="feel" id="current-feel"></span>°</div>
         </div>
         <div class="row">
           <div class="col current-weather">
@@ -56,15 +59,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            Feels like
-            <span class="feel" id="current-feel"></span>°</div>
+          <div class="col max-min-temperature">
+            Max <span id="max-temp"></span>° | Min
+            <span id="min-temp"></span>°
+          </div>
           <div class="col weather-description" id="description"></div>
         </div>
         <hr />
       </div>
       <div class="hour-weather-forecast" id="hour-forecast"></div>
       <div class="week-weather-forecast" id="week-forecast"></div>
+      <div class="date" id="current-date"></div>
     </div>
     <div class="freepik-link">Most icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"><a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     <footer class="open-source-link">
