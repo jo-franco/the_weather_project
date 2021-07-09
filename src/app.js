@@ -160,7 +160,7 @@ function showFahrenheitForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "d8af4b7d8cdbdf9cf3715e274a125f97";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metrics`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
