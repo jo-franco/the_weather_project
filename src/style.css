@@ -39,7 +39,7 @@ h4#city {
   margin: 0px;
 }
 .max-min-temperature {
-  margin: 0px 20px;
+  margin: 0px 12px;
   padding: 0px;
 }
 .feels-like {
@@ -61,7 +61,6 @@ img#current-icon {
   cursor: default;
   text-decoration: none;
 }
-
 hr {
   border-top: 1px solid #1df9d4;
 }
@@ -74,11 +73,10 @@ hr {
 }
 img#week-forecast-icons {
   margin: 4px;
-  max-width: 70%;
+  max-width: 60%;
 }
 .hour-weather-forecast {
   margin: 20px;
-  padding: 10px;
   text-align: center;
   text-transform: capitalize;
 }

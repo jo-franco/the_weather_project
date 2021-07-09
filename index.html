@@ -22,7 +22,6 @@
   <body>
     <div class="container">
       <div class="weather-container">
-        
         <nav class="navbar navbar-light" style="background-color: #d9f6ff;">
         <div class="container-fluid">
           <form class="d-flex">
@@ -31,10 +30,11 @@
               type="search"
               placeholder="Search City"
               aria-label="Search"
+              id="search-form"
             />
             <button class="btn btn-outline-info" type="submit">Search</button>
           </form>
-          <button class="btn btn-outline-dark me-2 mt-2 mb-2" type="button">Local</button>
+          <button class="btn btn-dark btn-sm mt-2" type="button">Local</button>
         </div>
       </nav>
       <div class="city-weather">
@@ -50,7 +50,7 @@
           <div class="col current-weather">
             <span class="temperature" id="current-temperature"></span>
             <span class="units">
-              <a href="#"  id="celsius-link" class="active">°C |</a>
+              <a href="#" id="celsius-link" class="active">°C |</a>
               <a href="#" id="fahrenheit-link">°F</a>
             </span>
           </div>
@@ -77,5 +77,4 @@
     </footer>
     <script src="src/app.js"></script>
   </body>
-  
   </html>

@@ -63,7 +63,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `Last updated: ${day} ${hours}:${minutes}`;
+  return `Last submitted: ${day} ${hours}:${minutes}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -90,12 +90,10 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(showForecast);
 }
 function showForecast(response = forecastValue) {
-  //console.log(response.data);
   forecastValue = response;
 
   let weekDays = response.data.daily;
   let hours = response.data.hourly;
-
   let weekForecastElement = document.querySelector("#week-forecast");
   let hourForecastElement = document.querySelector("#hour-forecast");
 
@@ -124,7 +122,6 @@ function showForecast(response = forecastValue) {
   `;
     }
   });
-
   weekForecastHTML = weekForecastHTML + `</div>`;
 
   let hourForecastHTML = `<div class="row">`;
@@ -147,7 +144,6 @@ function showForecast(response = forecastValue) {
   `;
     }
   });
-
   hourForecastHTML = hourForecastHTML + `</div>`;
 
   hourForecastElement.innerHTML = hourForecastHTML;
@@ -159,7 +155,6 @@ function showTemperature(response) {
   feelTemperature = response.data.main.feels_like;
   maxTemperature = response.data.main.temp_max;
   minTemperature = response.data.main.temp_min;
-
   document.querySelector("#current-temperature").innerHTML =
     getTemperature(temperature);
   document.querySelector("#max-temp").innerHTML =
@@ -190,6 +185,7 @@ function search(cityInput) {
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("input[type='search']").value;
+  document.getElement;
   search(cityInput);
 }
 function getPosition(position) {
@@ -210,6 +206,7 @@ let temperature = null;
 let feelTemperature = null;
 let maxTemperature = null;
 let minTemperature = null;
+let forecastValue = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertCelsius);
